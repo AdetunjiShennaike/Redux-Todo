@@ -2,39 +2,49 @@ import React from 'react'
 
 //import the connect that bridges the react and redux 
 import { connect } from 'react-redux';
-import { add } from '../actions';
+import { add } from '../actions/App';
 
-class ToDo extends Component {
+class ToDo extends React.Component {
   state = {
     newToDo: {
       name: '',
       completed: false,
-      id: Date.now()
+      id: 0
     }
   }
 
-  eventHandler(event) {
+  eventHandler = event => {
+    // console.log(event.target.value)
     this.setState({
-      name: event.target.value
+      newToDo: {
+        ...this.state.newToDo,
+        name: event.target.value,
+        id: Date.now()
+      }      
     })
   }
 
-  newTask(event) {
+  newTask = event => {
     event.preventDefault()
+    // console.log(this.state.newToDo)
     this.props.add(this.state.newToDo)
     this.setState({
-      name: ''
+      newToDo: {
+        ...this.state.newToDo,
+        name: ''
+      }  
     })
   }
 
   render() {
+    
       return (
         <div>
           <input 
             type='text'
-            value={this.state.name}
+            value={this.state.newToDo.name}
             placeholder='New Task'
-            onchange={this.eventHandler}
+            onChange={this.eventHandler}
           />
           <button onClick={this.newTask}>Add</button>
         </div>
@@ -60,4 +70,4 @@ const mapStateToProps = (state) => {
 // is only a dumb React component. We pass in all of the functions that
 // are reliant on Redux, along with the component itself, so that Redux
 // makes itself known to this component.
-export default connect(mapStateToProps, { add })(Todo);
+export default connect(mapStateToProps, { add })(ToDo);

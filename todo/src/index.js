@@ -6,7 +6,7 @@ import './index.css';
 
 //component
 import App from './App';
-import todos from './reducers'
+import todos from './reducers/App'
 
 //redux component for creating store
 import { createStore } from 'redux';
@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 
 let store = createStore(todos)
 
+console.log(todos)
 
 ReactDOM.render(
   <Provider store ={store}>

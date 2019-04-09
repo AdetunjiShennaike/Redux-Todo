@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import ToDo from './components'
+// import './App.css';
+import ToDo from './components/Todo'
 import ToDoList from './components/ToDoList';
 import { connect } from 'react-redux'
-import { remove } from './actions'
+import { remove } from './actions/App'
 
 class App extends Component {
 
@@ -16,12 +16,11 @@ class App extends Component {
   }
 
   render() {
+    // console.log(this.props, this.props.todos)
     return (
       <div className="App">
         <h1>To Do List</h1>
-        {this.props.todos.map(event => {
-          <ToDoList key={event.id} todo={event} />
-        })}
+        {this.props.todos.map(event => <ToDoList key={event.id} todo={event} />)}
         <ToDo />
       </div>
     );

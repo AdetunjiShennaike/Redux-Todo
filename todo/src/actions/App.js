@@ -13,6 +13,6 @@ export let add = (todo) => {
 export let remove = (todo) => {
   return {
     type: DELETE,
-    payload: event
+    payload: todo
   }
 }

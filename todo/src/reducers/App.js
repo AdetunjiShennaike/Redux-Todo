@@ -1,9 +1,13 @@
 //import the actions 
-import { ADD, DELETE } from '../actions'
+import { ADD, DELETE } from '../actions/App'
 
 //default state when the application first loads
 let initialState = {
-  todos = []
+  todos: [{
+    name: 'test',
+    completed: false,
+    id: 1
+  }]
 }
 
 
@@ -11,9 +15,10 @@ let initialState = {
 export default (state = initialState, action) => {
   switch(action.type){
     case ADD:
+    console.log(action.payload)
       return {
         ...state,
-        todos: ({...todos}, action.payload)
+        todos: [...state.todos, action.payload]
       }
     case DELETE:
       return {
