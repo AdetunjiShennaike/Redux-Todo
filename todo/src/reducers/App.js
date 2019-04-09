@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case ADD:
       return {
         ...state,
-        todos: action.payload
+        todos: ({...todos}, action.payload)
       }
     case DELETE:
       return {

@@ -3,14 +3,14 @@ export let ADD = 'ADD'
 export let DELETE ='DELETE'
 
 //action creators that will be sent to the reducer, where they will handle the logic for the redux store
-export let add = (todos) => {
+export let add = (todo) => {
   return {
     type: ADD,
-    payload: event
+    payload: todo
   }
 }
 
-export let delete = (todos) => {
+export let remove = (todo) => {
   return {
     type: DELETE,
     payload: event
