@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import ToDo from './components/Todo'
+import ToDoList from './components/ToDoList';
+import { connect } from 'react-redux'
+import { remove } from './actions/App'
 
 class App extends Component {
+
+  toggleTask() {
+
+  }
+
+  removeFinished() {
+
+  }
+
   render() {
+    // console.log(this.props, this.props.todos)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>To Do List</h1>
+        {this.props.todos.map(event => <ToDoList key={event.id} todo={event} />)}
+        <ToDo />
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+      todos: state.todos
+  };
+};
 
-export default App;
+
+export default connect(mapStateToProps, { remove })(App);
+
